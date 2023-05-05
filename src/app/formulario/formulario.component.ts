@@ -12,8 +12,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./formulario.component.scss'],
 })
 export class FormularioComponent {
-  newloginForm!: FormGroup;
-  newlogin!: Usuarios;
+  newregisterForm!: FormGroup;
+  newregister!: Usuarios;
   resultado!: object;
   @Output()
   propagar = new EventEmitter<Observable<Usuarios[]>>();
@@ -22,7 +22,7 @@ export class FormularioComponent {
     private servicioService: ServicioService,
     private fb: FormBuilder
   ) {
-    this.newloginForm = this.fb.group({
+    this.newregisterForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
       repite: ['',[Validators.required]]
@@ -33,24 +33,24 @@ export class FormularioComponent {
   }
 
   get email() {
-    return this.newloginForm.get('email');
+    return this.newregisterForm.get('email');
   }
 
   get password() {
-    return this.newloginForm.get('password');
+    return this.newregisterForm.get('password');
   }
 
   get repite() {
-    return this.newloginForm.get('repite');
+    return this.newregisterForm.get('repite');
   }
 
 
-  entradalogin() {
-    if (this.newloginForm.invalid) {
-      console.log(this.newloginForm.status);
+  entradaregister() {
+    if (this.newregisterForm.invalid) {
+      console.log(this.newregisterForm.status);
     } else {
-      this.newlogin = this.newloginForm.value;
-      this.servicioService.postDatos(this.newlogin)
+      this.newregister = this.newregisterForm.value;
+      this.servicioService.postDatos(this.newregister)
       .subscribe({
         next: res=>this.resultado=res,
         error: err=>console.log("error",err),

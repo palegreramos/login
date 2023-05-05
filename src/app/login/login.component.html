@@ -1,0 +1,9 @@
+<p>login works!</p>
+<form (ngSubmit)="entradalogin()" [formGroup]="newloginForm">
+    <input type="text" formControlName="email" name="email" placeholder="email"/>
+    <input type="password" formControlName="password" name="password" placeholder="contraseña"/>
+    <input type="submit" [disabled]="newloginForm.invalid"/>
+</form>
+<div *ngIf="fallo">
+Nombre de usuario o contraseña no válidos
+</div>

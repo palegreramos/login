@@ -18,4 +18,8 @@ export class ServicioService {
   postDatos(datos:Usuarios): Observable<Usuarios[]> {
     return this.http.post<Usuarios[]>(`${this.url}insertar.php`,datos);
   }
+
+  login(user: Usuarios): Observable<Usuarios[]> {
+    return this.http.post<Usuarios[]>(`${this.url}login.php`, user);
+  }
 }

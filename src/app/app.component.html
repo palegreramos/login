@@ -1,13 +1,5 @@
-<p>Datos iniciales porque solo se leen al inicio:</p>
+<a routerLink="/register">Registro</a><br>
+<a routerLink="/login">Login</a>
 
-<ul>
-    <li *ngFor="let usuario of usuariosiniciales">{{usuario.email}}</li>
-</ul>
+<router-outlet></router-outlet>
 
-
-<hr>
-<app-formulario (propagar)="procesa($event)"></app-formulario>
-
-<hr>
-<p>Datos que se van actualizando porque se reciben desde el componente formulario cada vez que se insertan</p>
-<p *ngFor="let u of (usuariosactuales$ | async)">{{ u.email }}</p>

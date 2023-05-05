@@ -1,5 +1,11 @@
 # Login
 
+## Agregar rutas una vez creado
+
+`ng generate module app-routing --flat --module=app`
+`--flat` coloca el archivo en src/app en lugar de en su propia carpeta.
+`--module=app` le dice a la CLI que lo registre en el arreglo de importaciones del AppModule.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
 ## Development server
