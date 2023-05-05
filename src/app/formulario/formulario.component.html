@@ -1,0 +1,17 @@
+<div class="formulario">
+<p>Componente formulario</p>
+<form (ngSubmit)="entradalogin()" [formGroup]="newloginForm">
+    <input type="text" formControlName="email" name="email" placeholder="email"/>
+    <input type="text" formControlName="password" name="password" placeholder="contraseña"/>
+    <input type="text" formControlName="repite" name="repite" placeholder="repite contraseña"/>
+    <input type="submit" [disabled]="newloginForm.invalid" />
+</form>
+
+<div *ngIf="newloginForm.invalid && newloginForm.touched">
+  <p>Formulario no válido</p>
+  <p *ngIf="email?.invalid && email?.touched">Email no válido</p>
+  <p *ngIf="password?.invalid && password?.touched">Password no válido</p>
+<p *ngIf="repite?.invalid && repite?.dirty">Las contraseñas no coinciden</p>
+</div>
+<div *ngIf="newloginForm.valid && newloginForm.touched">Formulario válido</div>
+</div>
