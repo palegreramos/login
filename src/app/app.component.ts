@@ -14,8 +14,8 @@ export class AppComponent {
   usuariosactuales$!: Observable<Usuarios[]>;
 
   constructor(private servicioService: ServicioService) {
-    servicioService.getDatos().subscribe(datosquevienen=>this.usuariosiniciales=datosquevienen);
-    this.usuariosactuales$=servicioService.getDatos();
+    this.servicioService.getDatos().subscribe(datosquevienen=>this.usuariosiniciales=datosquevienen);
+    this.usuariosactuales$=this.servicioService.getDatos();
   }
   procesa(datos: Observable<Usuarios[]>) {
     this.usuariosactuales$=datos;

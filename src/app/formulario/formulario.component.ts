@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServicioService } from '../servicio.service';
 import { Usuarios } from '../usuarios';
 import { ValidateCustom } from './passwordMatch.validator';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-formulario',
@@ -13,8 +14,9 @@ import { ValidateCustom } from './passwordMatch.validator';
 export class FormularioComponent {
   newloginForm!: FormGroup;
   newlogin!: Usuarios;
+  resultado!: object;
   @Output()
-  propagar = new EventEmitter<any>();
+  propagar = new EventEmitter<Observable<Usuarios[]>>();
 
   constructor(
     private servicioService: ServicioService,
@@ -49,7 +51,11 @@ export class FormularioComponent {
     } else {
       this.newlogin = this.newloginForm.value;
       this.servicioService.postDatos(this.newlogin)
-      .subscribe(() => (this.propagar.emit(this.servicioService.getDatos())));
+      .subscribe({
+        next: res=>this.resultado=res,
+        error: err=>console.log("error",err),
+        complete: () => this.propagar.emit(this.servicioService.getDatos())
+      });
     }
   }
 }
