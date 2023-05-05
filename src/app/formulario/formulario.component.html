@@ -2,8 +2,8 @@
 <p>Componente formulario</p>
 <form (ngSubmit)="entradalogin()" [formGroup]="newloginForm">
     <input type="text" formControlName="email" name="email" placeholder="email"/>
-    <input type="text" formControlName="password" name="password" placeholder="contraseña"/>
-    <input type="text" formControlName="repite" name="repite" placeholder="repite contraseña"/>
+    <input type="password" formControlName="password" name="password" placeholder="contraseña"/>
+    <input type="password" formControlName="repite" name="repite" placeholder="repite contraseña"/>
     <input type="submit" [disabled]="newloginForm.invalid" />
 </form>
 
