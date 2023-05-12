@@ -7,6 +7,7 @@ $json = file_get_contents('php://input');
  
 $params = json_decode($json);
 
+
 	try {	
 	  $mbd = new PDO('mysql:host=localhost;dbname=nueva', "root", "");
   		$sentencia = $mbd->prepare("SELECT * FROM login where email=:email and password=:password");
