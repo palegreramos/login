@@ -24,8 +24,8 @@ export class FormularioComponent {
   ) {
     this.newregisterForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
-      repite: ['',[Validators.required]]
+      password: ['', [Validators.required, Validators.minLength(4),Validators.maxLength(16),Validators.pattern('^[0-9]*$')]],
+      repite: ['',[Validators.required]],
     },
     {
       validators: ValidateCustom.passwordMatchValidator('password', 'repite')

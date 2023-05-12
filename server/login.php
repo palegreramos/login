@@ -17,8 +17,8 @@ $params = json_decode($json);
 		$sentencia->execute();
 		$error=$sentencia->errorInfo();
 		header('Content-Type: application/json');
-		if ($res->errorCode()==0) {
-			$rows=$res->fetchAll(PDO::FETCH_ASSOC);
+		if ($sentencia->errorCode()==0) {
+			$rows=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 			header('Content-type: application/json');
 			echo json_encode($rows);
 		}
