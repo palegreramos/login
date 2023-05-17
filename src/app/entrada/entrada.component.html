@@ -3,6 +3,7 @@
 <form (ngSubmit)="crear(ciudadForm)" #ciudadForm="ngForm">
   <label for="ciudad">Ciudad</label>
   <input
+  pattern="[a-zA-Z ]*"
     type="text"
     ngModel
     #ciudad="ngModel"
@@ -10,9 +11,12 @@
     name="ciudad"
     (input)="comprobar(ciudadForm)"
   />
-<span *ngIf="ciudad.dirty">
-  <span *ngIf="!repetida">Nombre disponible</span>
-  <span *ngIf="repetida">Repetida</span>
+<span *ngIf="ciudad.dirty && ciudad.valid">
+  <span *ngIf="!repetida">Nombre disponible (servidor)</span>
+  <span *ngIf="repetida">Repetida (servidor)</span>
+</span>
+<span *ngIf="ciudad.dirty && !ciudad.valid">
+  <span>Nombre no válido (cliente)</span>
 </span>
   <button type="submit">Create</button>
 </form>
