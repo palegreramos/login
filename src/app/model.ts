@@ -5,3 +5,8 @@ export interface Usuarios {
   email: string;
   passwd: string;
 }
+
+export interface Ciudades {
+  id: number;
+  ciudad: string;
+}

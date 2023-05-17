@@ -1,2 +1,23 @@
 <p>entrada works!</p>
-<p>Hola, {{email}}</p>
+<p>Hola, {{ email }}</p>
+<form (ngSubmit)="crear(ciudadForm)" #ciudadForm="ngForm">
+  <label for="ciudad">Ciudad</label>
+  <input
+    type="text"
+    ngModel
+    #ciudad="ngModel"
+    placeholder="añade ciudad"
+    name="ciudad"
+    (input)="comprobar(ciudadForm)"
+  />
+<span *ngIf="ciudad.dirty">
+  <span *ngIf="!repetida">Nombre disponible</span>
+  <span *ngIf="repetida">Repetida</span>
+</span>
+  <button type="submit">Create</button>
+</form>
+<select>
+  <option *ngFor="let ciudad of ciudades$ | async" value="ciudad">
+    {{ ciudad.ciudad }}
+  </option>
+</select>
