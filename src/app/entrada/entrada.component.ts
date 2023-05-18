@@ -25,6 +25,7 @@ export class EntradaComponent {
   }
 
   comprobar(ciudadForm: any) {
+
     this.servicioService.getCiudad(ciudadForm.value).subscribe((data) => {
       if (Object.entries(data).length === 0) {
         this.repetida = false;

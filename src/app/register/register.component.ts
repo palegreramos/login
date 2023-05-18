@@ -17,7 +17,6 @@ export class RegisterComponent {
       .getDatos()
       .subscribe((datosquevienen) => (this.usuariosiniciales = datosquevienen));
     this.usuariosactuales$ = this.servicioService.getDatos();
-    console.log(this.servicioService, this.usuariosactuales$);
   }
   procesa(datos: Observable<Usuarios[]>) {
     console.log(datos);

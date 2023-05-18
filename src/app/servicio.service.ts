@@ -28,6 +28,7 @@ export class ServicioService {
     return this.http.post<Ciudades>(`${this.url}insertarciudad.php`, ciudad);
   }
   getCiudad(ciudad: Ciudades): Observable<Ciudades> {
+    
     return this.http.post<Ciudades>(`${this.url}leerciudad.php`, {
       ciudad: ciudad.ciudad,
     });
